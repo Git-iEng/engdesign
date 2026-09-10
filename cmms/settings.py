@@ -42,6 +42,26 @@ SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
  
 CSRF_TRUSTED_ORIGINS = ["https://*.ieng.tech"]
 # Application definition
+# Application definition
+# ============================================================
+# CHANGE BY JYOTI - 10-Sep-2026
+# EMAIL OTP SESSION CONFIGURATION - START
+# ============================================================
+ 
+# Store OTP session information in signed cookies.
+# This avoids dependency on the django_session database table.
+SESSION_ENGINE = "django.contrib.sessions.backends.signed_cookies"
+ 
+# Use a separate session cookie for Transformer website.
+SESSION_COOKIE_NAME = "transformer_sessionid"
+ 
+SESSION_COOKIE_HTTPONLY = True
+SESSION_COOKIE_SAMESITE = "Lax"
+ 
+# ============================================================
+# CHANGE BY JYOTI - EMAIL OTP SESSION CONFIGURATION - END
+# ============================================================
+ 
  
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -156,10 +176,13 @@ EMAIL_HOST_PASSWORD = 'test@iEng'  # Your email password
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 CONTACT_RECIPIENTS = [
     "shila@iengaust.com.au",
-    "amar@iengaust.com.au",
-    "kushankur@iengaust.com.au"
+     "test@ieng.tech",
+     "aarti@iengaust.com.au",
+     #"jyoti@iengaust.com.au"
 ]
-CONTACT_RECIPIENTS = ["shila@iengaust.com.au","amar@iengaust.com.au", "kushankur@iengaust.com.au"]
+CONTACT_RECIPIENTS = ["shila@iengaust.com.au","test@ieng.tech","aarti@iengaust.com.au"]
+#CONTACT_RECIPIENTS = ["jyoti@iengaust.com.au"]
+
 DEMO_RECIPIENTS = CONTACT_RECIPIENTS
  
 # CONTACT_EMAIL = 'diksha@iengaust.com.au'
